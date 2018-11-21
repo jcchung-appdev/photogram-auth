@@ -1,0 +1,38 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      <%= @user.username %>
+    </h1>
+
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <% Photo.where(user_id: @user.id).each do |photo| %>
+    <div class="row mb-5">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">
+          <a href="/users/<%= photo.user_id %>">
+            <%= User.find(photo.user_id).username %>
+          </a>
+          <small>
+            <%= time_ago_in_words(photo.created_at) %> ago
+          </small>
+        </h4>
+      </div>
+      <div class="card-body">
+        <a href="/photos/<%= photo.id %>">
+          <img src="<%= photo.image %>" class="img-fluid">
+        </a>
+      </div>
+    </div>
+    </div>
+    <% end %>
+    
+  </div>
+</div>

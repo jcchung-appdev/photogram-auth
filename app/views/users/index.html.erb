@@ -1,0 +1,16 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr><th><h1>All Users</h1></th></tr>
+      <% @users.each do |user| %>
+      <tr>
+        <td>
+          <a href="/users/<%= user.id %>">
+              <%= user.username %>
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

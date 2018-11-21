@@ -1,0 +1,26 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <% Like.where(user_id: current_user.id).each do |like| %>
+    <div class="row mb-5">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">
+          <a href="/users/<%= Photo.find(like.photo_id).user_id %>">
+            <%= User.find(Photo.find(like.photo_id).user_id).username %>
+          </a>
+          <small>
+            <%= time_ago_in_words(Photo.find(like.photo_id).created_at) %> ago
+          </small>
+        </h4>
+      </div>
+      <div class="card-body">
+        <a href="/photos/<%= Photo.find(like.photo_id).id %>">
+          <img src="<%= Photo.find(like.photo_id).image %>" class="img-fluid">
+        </a>
+      </div>
+    </div>
+    </div>
+    <% end %>
+    
+  </div>
+</div>
